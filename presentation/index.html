@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TechNova - Presentación | Optimización de Contratación</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  </head>
+  <body>
+    <!-- Presentation Container -->
+    <div class="presentation-container">
+      
+      <!-- Slide 1: Portada con Integrantes -->
+      <div class="slide active" id="slide-1">
+        <div class="slide-content">
+          <div class="portada">
+            <div class="portada-icon">📊</div>
+            <h1 class="portada-title">TechNova</h1>
+            <h2 class="portada-subtitle">Optimización de Costos y Conocimientos en la Contratación de Diseñadores</h2>
+            <div class="portada-info">
+              <p>Investigación de Operaciones</p>
+              <p>Programación Lineal - Método Simplex</p>
+            </div>
+            <div class="integrantes">
+              <h3>PRESENTADO POR</h3>
+              <ul>
+                <li>JOSÉ SIMÓN BARRETO CARDONA - 55547</li>
+                <li>JUAN DAVID CARO MARTÍNEZ - 55570</li>
+                <li>SERGIO ESTEBAN PINEDA RAMÍREZ - 55570</li>
+                <li>DANNA MARCELA HERRERA BERRIO - 55570</li>
+                <li>DIVER ANDREY SUATERNA BALLARES - 55570</li>
+              </ul>
+            </div>
+            <div class="portada-footer">
+              <p>2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2: Contexto del Problema -->
+      <div class="slide" id="slide-2">
+        <div class="slide-content">
+          <h1 class="slide-title">📖 Contexto del Problema</h1>
+          <div class="context-box">
+            <p id="contextoDescripcion" class="context-text"></p>
+          </div>
+          <div class="context-grid">
+            <div class="context-item">
+              <div class="context-item-icon">💼</div>
+              <h3>Diseñador Junior</h3>
+              <p class="highlight">$2,000/mes</p>
+              <p>3 tecnologías</p>
+            </div>
+            <div class="context-item">
+              <div class="context-item-icon">🎯</div>
+              <h3>Diseñador Senior</h3>
+              <p class="highlight">$3,000/mes</p>
+              <p>7 tecnologías</p>
+            </div>
+            <div class="context-item">
+              <div class="context-item-icon">📋</div>
+              <h3>Requerimientos</h3>
+              <p class="highlight">Mínimo 3 diseñadores</p>
+              <p>Mínimo 10 tecnologías</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 3: Modelo Matemático -->
+      <div class="slide" id="slide-3">
+        <div class="slide-content">
+          <h1 class="slide-title">📐 Modelo Matemático</h1>
+          
+          <div class="modelo-box">
+            <h2>🔢 Variables de Decisión</h2>
+            <div class="variables">
+              <div class="variable"><span class="var">x</span> = Número de diseñadores junior a contratar</div>
+              <div class="variable"><span class="var">y</span> = Número de diseñadores senior a contratar</div>
+            </div>
+          </div>
+
+          <div class="modelo-box objetivo">
+            <h2>🎯 Función Objetivo</h2>
+            <div class="formula-box">
+              <span class="formula-label">Minimizar</span>
+              <span class="formula-main">Z = 2000x + 3000y</span>
+            </div>
+            <p class="formula-desc">Minimizar el costo total de contratación</p>
+          </div>
+
+          <div class="modelo-box restricciones">
+            <h2>⚖️ Restricciones</h2>
+            <div class="restricciones-list">
+              <div class="restriccion"><span class="formula-text">3x + 7y ≥ 10</span> <span class="desc">Cobertura tecnológica mínima</span></div>
+              <div class="restriccion"><span class="formula-text">x + y ≥ 3</span> <span class="desc">Tamaño mínimo del equipo</span></div>
+              <div class="restriccion"><span class="formula-text">x, y ≥ 0</span> <span class="desc">No negatividad</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 4: Solución Óptima -->
+      <div class="slide" id="slide-4">
+        <div class="slide-content">
+          <h1 class="slide-title">✨ Solución Óptima</h1>
+          
+          <div class="kpis-grid">
+            <div class="kpi-box primary">
+              <div class="kpi-icon">💰</div>
+              <div class="kpi-label">Costo Óptimo</div>
+              <div class="kpi-value" id="costoOptimo">$7,000</div>
+              <div class="kpi-badge">Solución Recomendada</div>
+            </div>
+            
+            <div class="kpi-box secondary">
+              <div class="kpi-icon">👥</div>
+              <div class="kpi-label">Equipo Óptimo</div>
+              <div class="kpi-value" id="equipoOptimo">2 Junior + 1 Senior</div>
+              <div class="kpi-badge">3 Diseñadores</div>
+            </div>
+            
+            <div class="kpi-box success">
+              <div class="kpi-icon">🔧</div>
+              <div class="kpi-label">Tecnologías</div>
+              <div class="kpi-value" id="tecnologias">13</div>
+              <div class="kpi-badge">+30% sobre mínimo</div>
+            </div>
+            
+            <div class="kpi-box warning">
+              <div class="kpi-icon">📈</div>
+              <div class="kpi-label">Eficiencia</div>
+              <div class="kpi-value" id="eficiencia">186%</div>
+              <div class="kpi-badge">Tec/$1000</div>
+            </div>
+          </div>
+
+          <div class="solution-highlight">
+            <h2>🎯 Combinación Recomendada</h2>
+            <p class="solution-text">2 Diseñadores Junior + 1 Diseñador Senior = <strong>$7,000</strong></p>
+            <p class="solution-desc">Mejor equilibrio entre economía, capacidad técnica y tamaño del equipo</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 5: Región Factible -->
+      <div class="slide" id="slide-5">
+        <div class="slide-content">
+          <h1 class="slide-title">📊 Región Factible</h1>
+          <div class="chart-slide">
+            <canvas id="regionFactibleChart"></canvas>
+          </div>
+          <div class="chart-legend">
+            <div class="legend-item"><span class="dot green"></span> Solución Óptima (2, 1)</div>
+            <div class="legend-item"><span class="dot orange"></span> Otras Soluciones Enteras</div>
+            <div class="legend-item"><span class="dot red"></span> Solución Continua (2.77, 0.23)</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: Comparación de Soluciones -->
+      <div class="slide" id="slide-6">
+        <div class="slide-content">
+          <h1 class="slide-title">📊 Comparación de Soluciones</h1>
+          <div class="chart-slide">
+            <canvas id="comparacionChart"></canvas>
+          </div>
+          <div class="comparison-note">
+            <p>La solución óptima (2 junior, 1 senior) ofrece el menor costo cumpliendo todas las restricciones</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: Tabla de Soluciones -->
+      <div class="slide" id="slide-7">
+        <div class="slide-content">
+          <h1 class="slide-title">📋 Todas las Soluciones Evaluadas</h1>
+          <div class="table-slide">
+            <table class="solutions-table">
+              <thead>
+                <tr>
+                  <th>Combinación</th>
+                  <th>Junior</th>
+                  <th>Senior</th>
+                  <th>Total</th>
+                  <th>Tecnologías</th>
+                  <th>Costo</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8: Análisis de Sensibilidad -->
+      <div class="slide" id="slide-8">
+        <div class="slide-content">
+          <h1 class="slide-title">🔄 Análisis de Sensibilidad</h1>
+          <div class="sensitivity-grid">
+            <div class="sensitivity-item">
+              <h3>Escenario 1</h3>
+              <p class="scenario-title">Aumento del costo senior a $3,500</p>
+              <p class="scenario-result">➜ Favorece contratación de más juniors</p>
+              <p class="scenario-impact">Impacto: <span class="badge moderate">Moderado</span></p>
+            </div>
+            <div class="sensitivity-item">
+              <h3>Escenario 2</h3>
+              <p class="scenario-title">Aumento de tecnologías requeridas a 12</p>
+              <p class="scenario-result">➜ Solución óptima se mantiene (13 tecnologías)</p>
+              <p class="scenario-impact">Impacto: <span class="badge low">Ninguno</span></p>
+            </div>
+          </div>
+          <div class="sensitivity-conclusion">
+            <p><strong>Conclusión:</strong> El modelo es robusto ante cambios moderados en costos y requerimientos</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 9: Conclusiones -->
+      <div class="slide" id="slide-9">
+        <div class="slide-content">
+          <h1 class="slide-title">💡 Conclusiones</h1>
+          <div class="conclusions-box" id="conclusiones"></div>
+        </div>
+      </div>
+
+      <!-- Slide 10: Recomendaciones -->
+      <div class="slide" id="slide-10">
+        <div class="slide-content">
+          <h1 class="slide-title">🎯 Recomendaciones</h1>
+          <div class="recommendations-box" id="recomendaciones"></div>
+        </div>
+      </div>
+
+      <!-- Slide 11: Exportar PDF -->
+      <div class="slide" id="slide-11">
+        <div class="slide-content">
+          <div class="export-slide">
+            <div class="export-icon">📄</div>
+            <h1>Exportar Presentación</h1>
+            <p class="export-desc">Genera un PDF con todas las diapositivas de esta presentación</p>
+            <button class="btn-export-pdf" id="btn-export-pdf">
+              📥 Descargar PDF
+            </button>
+            <div class="export-info">
+              <p>El PDF incluirá:</p>
+              <ul>
+                <li>✓ Portada con integrantes</li>
+                <li>✓ Contexto del problema</li>
+                <li>✓ Modelo matemático completo</li>
+                <li>✓ Solución óptima y KPIs</li>
+                <li>✓ Gráficos de análisis</li>
+                <li>✓ Conclusiones y recomendaciones</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Navigation Controls -->
+    <div class="nav-controls">
+      <button class="nav-btn prev" id="btn-prev">◀ Anterior</button>
+      <div class="slide-counter">
+        <span id="current-slide">1</span> / <span id="total-slides">11</span>
+      </div>
+      <button class="nav-btn next" id="btn-next">Siguiente ▶</button>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
