@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - Optimización de Contratación | TechNova</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="dashboard-container">
+      <!-- Header -->
+      <header class="dashboard-header">
+        <div class="header-content">
+          <div class="header-left">
+            <h1>TechNova - Optimización de Contratación</h1>
+            <p class="subtitle">
+              Optimización de Costos y Conocimientos en la Contratación de
+              Diseñadores para una Startup
+            </p>
+          </div>
+          <div class="header-right">
+            <div class="status-indicator">
+              <span class="status-dot"></span>
+              <span>Datos actualizados</span>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Contexto Section -->
+      <section class="context-section">
+        <div class="context-card">
+          <div class="context-icon">📖</div>
+          <div class="context-content">
+            <h2>Contexto del Problema</h2>
+            <p id="contextoDescripcion"></p>
+          </div>
+        </div>
+        <div class="context-details">
+          <div class="detail-item">
+            <span class="detail-icon">💼</span>
+            <div>
+              <strong>Diseñador Junior</strong>
+              <p>Costo: $2,000/mes | Tecnologías: 3</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">🎯</span>
+            <div>
+              <strong>Diseñador Senior</strong>
+              <p>Costo: $3,000/mes | Tecnologías: 7</p>
+            </div>
+          </div>
+          <div class="detail-item">
+            <span class="detail-icon">📋</span>
+            <div>
+              <strong>Requerimientos</strong>
+              <p>Mínimo 3 diseñadores | Mínimo 10 tecnologías</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modelo Matemático Section -->
+      <section class="modelo-section">
+        <h2 class="section-title">📐 Modelo Matemático</h2>
+        <div class="modelo-grid">
+          <!-- Variables de Decisión -->
+          <div class="modelo-card">
+            <div class="modelo-header">
+              <span class="modelo-icon">🔢</span>
+              <h3>Variables de Decisión</h3>
+            </div>
+            <div class="modelo-content">
+              <div class="variable-item">
+                <span class="variable-symbol">x</span>
+                <span class="variable-desc"
+                  >= Número de diseñadores junior a contratar</span
+                >
+              </div>
+              <div class="variable-item">
+                <span class="variable-symbol">y</span>
+                <span class="variable-desc"
+                  >= Número de diseñadores senior a contratar</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- Función Objetivo -->
+          <div class="modelo-card objetivo-card">
+            <div class="modelo-header">
+              <span class="modelo-icon">🎯</span>
+              <h3>Función Objetivo</h3>
+            </div>
+            <div class="modelo-content">
+              <div class="objetivo-formula">
+                <span class="objetivo-label">Minimizar</span>
+                <span class="formula">Z = 2000x + 3000y</span>
+              </div>
+              <p class="objetivo-desc">
+                Minimizar el costo total de contratación de diseñadores
+              </p>
+            </div>
+          </div>
+
+          <!-- Restricciones -->
+          <div class="modelo-card restricciones-card">
+            <div class="modelo-header">
+              <span class="modelo-icon">⚖️</span>
+              <h3>Restricciones</h3>
+            </div>
+            <div class="modelo-content">
+              <div class="restriccion-item">
+                <span class="restriccion-formula">3x + 7y ≥ 10</span>
+                <span class="restriccion-desc"
+                  >Cobertura tecnológica mínima</span
+                >
+              </div>
+              <div class="restriccion-item">
+                <span class="restriccion-formula">x + y ≥ 3</span>
+                <span class="restriccion-desc">Tamaño mínimo del equipo</span>
+              </div>
+              <div class="restriccion-item">
+                <span class="restriccion-formula">x, y ≥ 0</span>
+                <span class="restriccion-desc">No negatividad</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KPI Cards -->
+      <section class="kpi-section">
+        <div class="kpi-card kpi-primary">
+          <div class="kpi-icon">💰</div>
+          <div class="kpi-content">
+            <p class="kpi-label">Costo Óptimo</p>
+            <h2 class="kpi-value" id="costoOptimo">$7,000</h2>
+            <span class="kpi-badge success">Solución Recomendada</span>
+          </div>
+        </div>
+
+        <div class="kpi-card kpi-secondary">
+          <div class="kpi-icon">👥</div>
+          <div class="kpi-content">
+            <p class="kpi-label">Equipo Óptimo</p>
+            <h2 class="kpi-value" id="equipoOptimo">2J + 1S</h2>
+            <span class="kpi-badge info">3 Diseñadores</span>
+          </div>
+        </div>
+
+        <div class="kpi-card kpi-tertiary">
+          <div class="kpi-icon">🔧</div>
+          <div class="kpi-content">
+            <p class="kpi-label">Tecnologías</p>
+            <h2 class="kpi-value" id="tecnologias">13</h2>
+            <span class="kpi-badge success">+30% sobre mínimo</span>
+          </div>
+        </div>
+
+        <div class="kpi-card kpi-quaternary">
+          <div class="kpi-icon">📈</div>
+          <div class="kpi-content">
+            <p class="kpi-label">Eficiencia</p>
+            <h2 class="kpi-value" id="eficiencia">89%</h2>
+            <span class="kpi-badge warning">Costo/Tecnología</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main Charts Grid -->
+      <section class="charts-grid">
+        <!-- Región Factible -->
+        <div class="chart-container large">
+          <div class="chart-header">
+            <h3>🎯 Región Factible - Espacio de Soluciones</h3>
+            <div class="chart-controls">
+              <button class="btn-control active" data-view="region">
+                Región
+              </button>
+              <button class="btn-control" data-view="points">Puntos</button>
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas id="regionFactibleChart"></canvas>
+          </div>
+          <div class="chart-legend">
+            <span class="legend-item"
+              ><span
+                class="legend-color"
+                style="background: rgba(102, 126, 234, 0.3)"
+              ></span>
+              Región Factible</span
+            >
+            <span class="legend-item"
+              ><span class="legend-color" style="background: #43e97b"></span>
+              Solución Óptima</span
+            >
+            <span class="legend-item"
+              ><span class="legend-color" style="background: #f5576c"></span>
+              Solución Continua</span
+            >
+          </div>
+        </div>
+
+        <!-- Comparación de Soluciones -->
+        <div class="chart-container medium">
+          <div class="chart-header">
+            <h3>💵 Comparación de Costos por Solución</h3>
+            <select id="metricSelector" class="metric-selector">
+              <option value="costo">Costo Total</option>
+              <option value="tecnologias">Tecnologías</option>
+              <option value="eficiencia">Eficiencia</option>
+            </select>
+          </div>
+          <div class="chart-body">
+            <canvas id="comparacionChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Costo vs Tecnologías -->
+        <div class="chart-container medium">
+          <div class="chart-header">
+            <h3>📊 Costo vs Tecnologías</h3>
+            <div class="info-tooltip">
+              <span class="tooltip-icon">ℹ️</span>
+              <span class="tooltip-text"
+                >Análisis de trade-off entre inversión y capacidad técnica</span
+              >
+            </div>
+          </div>
+          <div class="chart-body">
+            <canvas id="scatterChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Composición del Equipo -->
+        <div class="chart-container small">
+          <div class="chart-header">
+            <h3>🥧 Composición del Equipo Óptimo</h3>
+          </div>
+          <div class="chart-body">
+            <canvas id="pieChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Análisis de Sensibilidad -->
+        <div class="chart-container small">
+          <div class="chart-header">
+            <h3>🔄 Análisis de Sensibilidad</h3>
+          </div>
+          <div class="chart-body">
+            <canvas id="sensibilidadChart"></canvas>
+          </div>
+        </div>
+
+        <!-- Tabla de Soluciones -->
+        <div class="chart-container full-width">
+          <div class="chart-header">
+            <h3>📋 Soluciones Enteras Evaluadas</h3>
+            <div class="table-controls">
+              <input
+                type="text"
+                id="tableSearch"
+                placeholder="Buscar..."
+                class="search-input"
+              />
+              <button class="btn-export">📥 Exportar</button>
+            </div>
+          </div>
+          <div class="table-wrapper">
+            <table id="solucionesTable" class="data-table">
+              <thead>
+                <tr>
+                  <th>Combinación</th>
+                  <th>Junior</th>
+                  <th>Senior</th>
+                  <th>Total</th>
+                  <th>Tecnologías</th>
+                  <th>Costo</th>
+                  <th>Factible</th>
+                  <th>Estado</th>
+                </tr>
+              </thead>
+              <tbody id="tableBody">
+                <!-- Populated by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insights Section -->
+      <section class="insights-section">
+        <div class="insight-card">
+          <div class="insight-header">
+            <h3>💡 Conclusiones Clave</h3>
+          </div>
+          <div class="insight-body" id="conclusiones">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="insight-card">
+          <div class="insight-header">
+            <h3>🎯 Recomendaciones</h3>
+          </div>
+          <div class="insight-body" id="recomendaciones">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="dashboard-footer">
+        <p>
+          Dashboard de Optimización - Programación Lineal | Desarrollado con
+          HTML, CSS y Chart.js
+        </p>
+      </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
